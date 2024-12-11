@@ -1,0 +1,57 @@
+﻿<Window x:Class="hw_4_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:hw_4_WPF"
+        mc:Ignorable="d"
+             Title="Notebook" Height="400" Width="500" MinHeight="200" MinWidth="200">
+
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="New" InputGestureText="Ctrl+N" Click="CreateNewFile"/>
+                <MenuItem Header="Open" InputGestureText="Ctrl+O" Click="LoadFile"/>
+                <MenuItem Header="Save" InputGestureText="Ctrl+S" Click="SaveCurrentFile"/>
+                <MenuItem Header="Save As" InputGestureText="Ctrl+Shift+S" Click="SaveFileAsNew"/>
+                <MenuItem Header="Print" InputGestureText="Ctrl+P" Click="PrintDocument"/>
+                <Separator/>
+                <MenuItem Header="Exit" Click="CloseApplication"/>
+            </MenuItem>
+
+            <MenuItem Header="Edit">
+                <MenuItem Header="Undo" InputGestureText="Ctrl+Z" Click="UndoAction"/>
+                <Separator/>
+                <MenuItem Header="Cut" InputGestureText="Ctrl+X" Click="CutText"/>
+                <MenuItem Header="Copy" InputGestureText="Ctrl+C" Click="CopyText"/>
+                <MenuItem Header="Paste" InputGestureText="Ctrl+V" Click="PasteText"/>
+                <MenuItem Header="Delete" InputGestureText="Del" Click="DeleteSelectedText"/>
+                <Separator/>
+                <MenuItem Header="Find" InputGestureText="Ctrl+F" Click="FindText"/>
+                <MenuItem Header="Replace" Click="ReplaceText"/>
+                <MenuItem Header="Go To Line" InputGestureText="Ctrl+G" Click="GoToLine"/>
+                <Separator/>
+                <MenuItem Header="Select All" InputGestureText="Ctrl+A" Click="SelectAllText"/>
+                <MenuItem Header="Insert Date/Time" InputGestureText="F5" Click="InsertCurrentDateTime"/>
+            </MenuItem>
+
+            <MenuItem Header="View">
+                <MenuItem Header="Zoom">
+                    <MenuItem Header="Zoom In" InputGestureText="Ctrl++" Click="ZoomIn"/>
+                    <MenuItem Header="Zoom Out" InputGestureText="Ctrl+-" Click="ZoomOut"/>
+                    <MenuItem Header="Reset Zoom" InputGestureText="Ctrl+0" Click="ResetZoom"/>
+                </MenuItem>
+                <MenuItem Header="Toggle Status Bar" IsCheckable="True" IsChecked="True" Click="ToggleStatusBar"/>
+                <MenuItem Header="Word Wrap" IsCheckable="True" IsChecked="True" Click="ToggleWordWrap"/>
+            </MenuItem>
+        </Menu>
+
+        <Grid>
+            <TextBox Name="editorTextBox" AcceptsReturn="True" AcceptsTab="True" TextWrapping="Wrap"
+                  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Margin="0,0,0,20"/>
+            <StatusBar VerticalAlignment="Bottom" Height="20">
+                <TextBlock Name="statusTextBlock" Text="Ready"/>
+            </StatusBar>
+        </Grid>
+    </DockPanel>
+</Window>
